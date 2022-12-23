@@ -1,0 +1,22 @@
+.popup__input{
+    border: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 17px;
+    width: 238px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin: 0 22px 29px;
+    padding-bottom: 9px;
+}
+@media screen and (min-width: 1024px) {
+    .popup__input{
+        margin: 0 36px 30px;
+        width: 358px;
+    }
+}

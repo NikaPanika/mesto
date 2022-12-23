@@ -11,7 +11,6 @@
 <body class="body">
     <header class="header">
         <img src="./images/logo.svg" alt="Логотип Mesto" class="header__logo">
-        <div class="header__line"></div>
     </header>
     <main class="main">
         <section class="profile">
@@ -19,71 +18,74 @@
                 <img src="./images/avatar.png" alt="Фотография" class="profile__avatar">
                 <div class="profile__info">
                     <div class="string">
-                        <h2 class="profile__name">Жак-Ив Кусто</h2>
-                        <button class="profile__edit-button"></button>
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"></button>
                     </div>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" type="button"></button>
         </section>
         <section class="photo-grid">
-            <div class="photo-grid__element">
+            <article class="photo-grid__element">
                 <img src="./images/karachaevsk.png" alt="Карачаевск" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Карачаевск</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Карачаевск</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
-            <div class="photo-grid__element">
+            </article>
+            <article class="photo-grid__element">
                 <img src="./images/Mountain-Elbrus.png" alt="Гора Эльбрус" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Гора Эльбрус</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Гора Эльбрус</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
-            <div class="photo-grid__element">
+            </article>
+            <article class="photo-grid__element">
                 <img src="./images/Dombai.png" alt="Домбай" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Домбай</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Домбай</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
-            <div class="photo-grid__element">
+            </article>
+            <article class="photo-grid__element">
                 <img src="./images/Mountain-Elbrus.png" alt="Гора Эльбрус" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Гора Эльбрус</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Гора Эльбрус</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
-            <div class="photo-grid__element">
+            </article>
+            <article class="photo-grid__element">
                 <img src="./images/Dombai.png" alt="Домбай" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Домбай</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Домбай</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
-            <div class="photo-grid__element">
+            </article>
+            <article class="photo-grid__element">
                 <img src="./images/karachaevsk.png" alt="Карачаевск" class="photo-grid__photo">
                 <div class="photo-grid__text">
-                    <p class="photo-grid__place">Карачаево-Черкессия</p>
-                    <button class="photo-grid__like"></button>
+                    <h2 class="photo-grid__place">Карачаево-Черкессия</h2>
+                    <button class="photo-grid__like" type="button"></button>
                 </div>
-            </div>
+            </article>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <form class="popup popup_edit">
-        <div class="popup__content">
-            <button class="popup__close-button"></button>
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
-            <input type="text" class="popup__name" value="Жак-Ив Кусто">
-            <input type="text" class="popup__description" value="Исследователь океана">
-            <button class="popup__save-button" type="submit">Сохранить</button>
+            <form class="popup_form" name="form-profile">
+                <input type="text" class="popup__input popup__input_type_name" name="user-name" value="Жак-Ив Кусто">
+                <input type="text" class="popup__input popup__input_type_description" name="user-work"
+                    value="Исследователь океана">
+                <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
         </div>
-    </form>
+    </div>
     <script src="./script/index.js"></script>
 </body>
 

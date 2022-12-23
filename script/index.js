@@ -1,9 +1,9 @@
 /* For opening */
 const editButton = document.querySelector('.profile__edit-button');
-const editPopup = document.querySelector('.popup_edit');
+const editPopup = document.querySelector('.popup');
 /* For storage */
-const nameInput = document.querySelector('.popup__name');
-const descriptionInput = document.querySelector('.popup__description')
+const nameInput = document.querySelector('.popup__input_type_name');
+const descriptionInput = document.querySelector('.popup__input_type_description')
 /* For changing */
 const nameProvile = document.querySelector('.profile__name');
 const descriptionProfile = document.querySelector('.profile__description');
@@ -11,7 +11,7 @@ const descriptionProfile = document.querySelector('.profile__description');
 const closeButton = document.querySelector(".popup__close-button");
 /* For saving */
 // Находим форму в DOM
-const formElement = document.querySelector('.popup_edit');// Воспользуйтесь методом querySelector()
+const formElement = document.querySelector('.popup');// Воспользуйтесь методом querySelector()
 
 function workOFpopup(){
     editPopup.classList.add('popup_opened');

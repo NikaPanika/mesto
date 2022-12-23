@@ -6,8 +6,9 @@
 }
 @media screen and (min-width: 1024px) {
     .profile{
-        margin-top: 37px;
+        margin-top: 39px;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 53px;
     }
 }
