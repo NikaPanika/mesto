@@ -8,7 +8,6 @@
     font-family: inherit;
     line-height: 17px;
     margin: 0 22px 30px;
-    font-family: inherit; 
 }
 @media screen and (min-width: 1024px) {
     .popup__name{
