@@ -1,7 +1,7 @@
 .profile__info{
     display: flex;
     flex-direction: column;
-    margin-bottom: 36px;
+    margin-bottom: 34px;
 }
 @media screen and (min-width: 1024px) {
     .profile__info{
