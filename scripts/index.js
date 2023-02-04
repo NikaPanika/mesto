@@ -8,10 +8,10 @@ const descriptionInput = document.querySelector('.popup__input_type_description'
 const nameProvile = document.querySelector('.profile__name');
 const descriptionProfile = document.querySelector('.profile__description');
 /* For closing */
-const closeButtonEdit = document.querySelector(".popup_close_edit");
+const closeButtonEdit = document.querySelector(".popup__close-button_close_edit");
 /* For saving */
 // Находим форму в DOM
-const formElement = document.querySelector('.popup_form_profile');// Воспользуйтесь методом querySelector()
+const formElement = document.querySelector('.popup__form_data_profile');// Воспользуйтесь методом querySelector()
 
 function openPopup(evt) {
     evt.classList.add('popup_opened');
@@ -25,7 +25,7 @@ function closePopup(evt) {
 const increaseImg = document.querySelector('.popup_type_big-image');
 const increaseImgLink = document.querySelector('.popup__photo');
 const increaseImgText = document.querySelector('.popup__caption');
-const increaseImgClose = document.querySelector('.popup_close_big-image');
+const increaseImgClose = document.querySelector('.popup__close-button_close_big-image');
 
 function bigImage(text, link) {
     openPopup(increaseImg);
@@ -136,8 +136,8 @@ function handleImageSubmit(event) {
 // For react on event
 const addButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup_type_new-place');
-const formImg = document.querySelector('.popup_form_card');
-const closeButtonAdd = document.querySelector('.popup_close_new-place');
+const formImg = document.querySelector('.popup__form_data_card');
+const closeButtonAdd = document.querySelector('.popup__close-button_close_new-place');
 
 editButton.addEventListener('click', workOFpopup);
 
