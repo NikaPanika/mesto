@@ -13,6 +13,32 @@ const closeButtonEdit = document.querySelector(".popup_close_edit");
 // Находим форму в DOM
 const formElement = document.querySelector('.popup_form_profile');// Воспользуйтесь методом querySelector()
 
+function openPopup(evt){
+    evt.classList.add('popup_opened');
+};
+
+function closePopup(evt){
+    evt.classList.remove('popup_opened');
+};
+
+//For increase
+const increaseImg = document.querySelector('.popup_type_big-image');
+const increaseImgLink = document.querySelector('.popup__photo');
+const increaseImgText = document.querySelector('.popup__caption');
+const increaseImgClose = document.querySelector('.popup_close_big-image');
+
+function bigImage (text, link){
+    openPopup(increaseImg);
+    increaseImgLink.src = link;
+    increaseImgLink.alt = text;
+    increaseImgText.textContent = text;
+};
+
+increaseImgClose.addEventListener('click', (event) => {
+    closePopup(increaseImg);
+});
+
+// For adding
 const initialCards = [
     {
       name: 'Архыз',
@@ -78,9 +104,7 @@ function renderCards(){
 };
 
 renderCards();
-function openPopup(evt){
-    evt.classList.add('popup_opened');
-};
+
 
 function workOFpopup(){
     openPopup(editPopup);
@@ -88,9 +112,6 @@ function workOFpopup(){
     descriptionInput.value = descriptionProfile.textContent;
 };
 
-function closePopup(evt){
-    evt.classList.remove('popup_opened');
-};
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -101,23 +122,18 @@ function handleFormSubmit (evt) {
     closePopup(editPopup);
 };
 
-
+// Saving new card
 const textImage = document.querySelector('.popup__input_type_place');
 const linkImage = document.querySelector('.popup__input_type_link');
 
 function handleImageSubmit (event) {
     event.preventDefault();
-    console.log(textImage.value, linkImage.value);
     const card = createCard(textImage.value, linkImage.value);
     cardsContainer.prepend(card);
     closePopup(popupCard);
 };
 
-function saveInput(evt){
-    evt.preventDefault();
-
-};
-// For adding
+// For react on event
 const addButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup_type_new-place');
 const formImg = document.querySelector('.popup_form_card');
@@ -140,19 +156,3 @@ closeButtonAdd.addEventListener('click', (event) => {
     closePopup(popupCard)
 });
 
-//For increase
-const increaseImg = document.querySelector('.popup_type_big-image');
-const increaseImgLink = document.querySelector('.popup__photo');
-const increaseImgText = document.querySelector('.popup__caption');
-const increaseImgClose = document.querySelector('.popup_close_big-image');
-
-function bigImage (text, link){
-    openPopup(increaseImg);
-    increaseImgLink.src = link;
-    increaseImgLink.alt = text;
-    increaseImgText.textContent = text;
-};
-
-increaseImgClose.addEventListener('click', (event) => {
-    closePopup(increaseImg);
-});
