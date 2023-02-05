@@ -45,19 +45,20 @@
     </template>
     <div class="popup popup_type_edit">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_close_edit" type="button"></button>
+            <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
             <form class="popup__form popup__form_data_profile" name="form-profile">
-                <input type="text" class="popup__input popup__input_type_name" name="user-name" value="Жак-Ив Кусто">
+                <input type="text" class="popup__input popup__input_type_name" name="user-name"
+                    placeholder="Жак-Ив Кусто">
                 <input type="text" class="popup__input popup__input_type_description" name="user-work"
-                    value="Исследователь океана">
+                    placeholder="Исследователь океана">
                 <button class="popup__save-button" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
     <div class="popup popup_type_new-place">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_close_new-place" type="button"></button>
+            <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Новое место</h2>
             <form class="popup__form popup__form_data_card" name="form-profile">
                 <input type="text" class="popup__input popup__input_type_place" name="user-name" placeholder="Название">
@@ -69,7 +70,7 @@
     </div>
     <div class="popup popup_type_big-image">
         <div class="popup__case">
-            <button class="popup__close-button popup__close-button_close_big-image" type="button"></button>
+            <button class="popup__close-button" type="button"></button>
             <img src="./images/Dombai.png" alt="Нужное изображение отсутствует" class="popup__photo">
             <h2 class="popup__caption">Новое место</h2>
         </div>

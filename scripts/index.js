@@ -25,18 +25,23 @@ function closePopup(evt) {
 const increaseImg = document.querySelector('.popup_type_big-image');
 const increaseImgLink = document.querySelector('.popup__photo');
 const increaseImgText = document.querySelector('.popup__caption');
-const increaseImgClose = document.querySelector('.popup__close-button_close_big-image');
 
-function bigImage(text, link) {
+function openBigImage(text, link) {
     openPopup(increaseImg);
     increaseImgLink.src = link;
     increaseImgLink.alt = text;
     increaseImgText.textContent = text;
 };
 
-increaseImgClose.addEventListener('click', (event) => {
-    closePopup(increaseImg);
-});
+//To close
+const closeButtons = document.querySelectorAll('.popup__close-button');
+closeButtons.forEach((button) => {
+    // находим 1 раз ближайший к крестику попап 
+    const popup = button.closest('.popup');
+    // устанавливаем обработчик закрытия на крестик
+    button.addEventListener('click', () => closePopup(popup));
+  });
+
 
 // For adding
 const initialCards = [
@@ -90,7 +95,7 @@ function createCard(text, link) {
     // increase
     const bigImg = card.querySelector('.photo-grid__photo');
     bigImg.addEventListener('click', () => {
-        bigImage(text, link);
+        openBigImage(text, link);
     });
 
     return card;
@@ -120,6 +125,7 @@ function handleFormSubmit(evt) {
     nameProvile.textContent = nameInput.value;
     descriptionProfile.textContent = descriptionInput.value;
     closePopup(editPopup);
+    evt.target.reset();
 };
 
 // Saving new card
@@ -131,19 +137,15 @@ function handleImageSubmit(event) {
     const card = createCard(textImage.value, linkImage.value);
     cardsContainer.prepend(card);
     closePopup(popupCard);
+    event.target.reset();
 };
 
 // For react on event
 const addButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup_type_new-place');
 const formImg = document.querySelector('.popup__form_data_card');
-const closeButtonAdd = document.querySelector('.popup__close-button_close_new-place');
 
 editButton.addEventListener('click', workOFpopup);
-
-closeButtonEdit.addEventListener('click', (event) => {
-    closePopup(editPopup)
-});
 
 formElement.addEventListener('submit', handleFormSubmit);
 
@@ -152,7 +154,4 @@ addButton.addEventListener('click', (event) => {
 });
 formImg.addEventListener('submit', handleImageSubmit);
 
-closeButtonAdd.addEventListener('click', (event) => {
-    closePopup(popupCard)
-});
 
