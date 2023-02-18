@@ -1,0 +1,18 @@
+.popup__input-error {
+    font-family: "Inter", "Arial", "sans-serif";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    min-height: 30px;
+    color: #FF0000;
+    /* opacity: 0; */
+    padding: 0;
+    margin: 5px 0 0;
+}
+
+@media screen and (max-width: 615px) {
+    .popup_input-error {
+        max-width: 238px;
+    }
+}
