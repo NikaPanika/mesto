@@ -15,10 +15,12 @@ const formElement = document.querySelector('.popup__form_data_profile');// Во�
 
 function openPopup(evt) {
     evt.classList.add('popup_opened');
+    document.addEventListener('keyup', closeEsc);
 };
 
 function closePopup(evt) {
     evt.classList.remove('popup_opened');
+    document.removeEventListener('keyup', closeEsc);
 };
 
 //For increase
@@ -169,4 +171,3 @@ const closeEsc = (event) => {
         closePopup(document.querySelector('.popup_opened'));
     }
 };
-document.addEventListener('keyup', closeEsc);
