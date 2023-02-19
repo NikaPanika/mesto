@@ -12,7 +12,6 @@ const enableValidation = {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(`.${inputElement.id}-error`);
   inputElement.classList.add(enableValidation.inputErrorClass);//red line
   errorElement.textContent = errorMessage;
 };
