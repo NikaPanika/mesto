@@ -40,7 +40,7 @@ closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     // устанавливаем обработчик закрытия на крестик
     button.addEventListener('click', () => closePopup(popup));
-  });
+});
 
 
 // For adding
@@ -154,4 +154,19 @@ addButton.addEventListener('click', (event) => {
 });
 formImg.addEventListener('submit', handleImageSubmit);
 
+// New types of closing
+const popupList = Array.from(document.querySelectorAll('.popup'));
+popupList.forEach(function (popup) {
+    popup.addEventListener('click', function (event) {
+        if (event.target === event.currentTarget) {
+            closePopup(popup);
+        }
+    })
+});
 
+const closeEsc = (event) => {
+    if (event.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened'));
+    }
+};
+document.addEventListener('keyup', closeEsc);

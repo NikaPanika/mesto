@@ -12,16 +12,15 @@ const enableValidation = {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(enableValidation.inputErrorClass);
+  console.log(`.${inputElement.id}-error`);
+  inputElement.classList.add(enableValidation.inputErrorClass);//red line
   errorElement.textContent = errorMessage;
-  console.log('5');
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(enableValidation.inputErrorClass);
   errorElement.textContent = '';
-  console.log('6');
 };
 
 const checkInputValidity = (formElement, inputElement) => {
@@ -30,7 +29,6 @@ const checkInputValidity = (formElement, inputElement) => {
   } else {
     hideInputError(formElement, inputElement);
   }
-  console.log('4');
 };
 
 const setEventListeners = (formElement) => {
@@ -38,14 +36,11 @@ const setEventListeners = (formElement) => {
   const buttonElement = formElement.querySelector(enableValidation.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
-    console.log(inputElement);
     inputElement.addEventListener('input', function () {
-      console.log('a');
       checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
   });
-  console.log('2');
 };
 
 const hasInvalidInput = (inputList) => {
@@ -62,7 +57,6 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.remove(enableValidation.inactiveButtonClass);
     enableValidation.submitButtonSelector.disabled = false;
   }
-  console.log('3')
 };
 
 const activateValidation = () => {
@@ -70,10 +64,8 @@ const activateValidation = () => {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
-      setEventListeners(formElement);
     });
-    console.log('1');
+    setEventListeners(formElement);
   });
 };
-console.log('hi');
 activateValidation();
