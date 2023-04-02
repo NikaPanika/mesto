@@ -194,7 +194,7 @@ function handleImageSubmit(event) {
 // New types of closing
 const popupList = Array.from(document.querySelectorAll('.popup'));
 popupList.forEach(function (popup) {
-    popup.addEventListener('click', function (event) {
+    popup.addEventListener('mousedown', function (event) {
         if (event.target === event.currentTarget) {
             closePopup(popup);
         }
