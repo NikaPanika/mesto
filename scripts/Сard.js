@@ -12,7 +12,7 @@ export default class Card {
         return card;
     }
 
-    _likeCard(evt) {
+    _toggleLike(evt) {
         evt.target.classList.toggle('photo-grid__like_on');
     }
 
@@ -25,7 +25,7 @@ export default class Card {
     }
     _addEventListeners() {
         // like
-        this._element.querySelector('.photo-grid__like').addEventListener('click', (evt) => this._likeCard(evt));
+        this._element.querySelector('.photo-grid__like').addEventListener('click', (evt) => this._toggleLike(evt));
         // delete
         this._element.querySelector('.photo-grid__delete').addEventListener('click', () => this._deleteCard());
         // increase

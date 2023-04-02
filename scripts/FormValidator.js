@@ -1,24 +1,24 @@
 export default class FormValidator {
-  constructor(settings, editPopup) {
-    this._editPopup = editPopup;
+  constructor(settings, formElement) {
+    this._formElement = formElement;
     this._inputErrorClass = settings.inputErrorClass;
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formSelector = settings.formSelector;
-    this._inputList = Array.from(this._editPopup.querySelectorAll(this._inputSelector));
-    this._submitButton = this._editPopup.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
   }
 
   //показать ошибку
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._editPopup.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);//red line
     errorElement.textContent = errorMessage;
   };
   //скрыть ошибку
   _hideInputError(inputElement) {
-    const errorElement = this._editPopup.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
   };
@@ -49,7 +49,7 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
-    this._editPopup.addEventListener('reset', () => { // собыите `reset` происходит когда вызывается `reset` у формы
+    this._formElement.addEventListener('reset', () => { // собыите `reset` происходит когда вызывается `reset` у формы
       setTimeout(() => {  // добавим таймаут, чтобы `toggleButtonState` вызвался уже после сохранения формы
         this._toggleButtonState(), 0
       })
@@ -63,13 +63,11 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    const formList = Array.from(document.querySelector(this._formSelector));
-    formList.forEach(formElement => {
-      formElement.addEventListener('submit', function (evt) {
+    this._inputList.forEach(item => {
+      item.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
       this._setEventListeners();
     });
   };
-
 }
