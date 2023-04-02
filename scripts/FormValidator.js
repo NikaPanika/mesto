@@ -42,7 +42,6 @@ export default class FormValidator {
   };
 
   _setEventListeners() {
-    const buttonElement = this._editPopup.querySelector(this._submitButtonSelector);
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
@@ -64,7 +63,7 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
+    const formList = Array.from(document.querySelector(this._formSelector));
     formList.forEach(formElement => {
       formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();

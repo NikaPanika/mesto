@@ -1,4 +1,4 @@
-import Card from "./card.js";
+import Card from "./Сard.js";
 import FormValidator from "./FormValidator.js";
 
 /* For opening */
@@ -13,8 +13,10 @@ const descriptionProfile = document.querySelector('.profile__description');
 /* For closing */
 const closeButtonEdit = document.querySelector(".popup__close-button_close_edit");
 /* For saving */
+// For inserting
+const cardPlace = document.querySelector('.photo-grid');
 // Находим форму в DOM
-const formElement = document.querySelector('.popup__form_data_profile');// Воспользуйтесь методом querySelector()
+const profileForm = document.querySelector('.popup__form_data_profile');// Воспользуйтесь методом querySelector()
 
 function openPopup(evt) {
     evt.classList.add('popup_opened');
@@ -76,52 +78,22 @@ const initialCards = [
     }
 ];
 const cardsContainer = document.querySelector('.photo-grid');
-//const cardTemplate = document.querySelector('.element-template').content;
-
-// function createCard(text, link) {
-//     const card = cardTemplate.querySelector('.photo-grid__element').cloneNode(true);
-//     const cardImg = card.querySelector('.photo-grid__photo');
-//     const cardText = card.querySelector('.photo-grid__place');
-
-//     cardText.textContent = text;
-//     cardImg.src = link;
-//     cardImg.alt = text;
-
-//     // like
-//     const like = card.querySelector('.photo-grid__like');
-//     like.addEventListener('click', () => {
-//         like.classList.toggle('photo-grid__like_on')
-//     });
-//     // delete
-//     const deleteCard = card.querySelector('.photo-grid__delete');
-//     deleteCard.addEventListener('click', () => {
-//         card.remove();
-//     });
-//     // increase
-//     const bigImg = card.querySelector('.photo-grid__photo');
-//     bigImg.addEventListener('click', () => {
-//         openBigImage(text, link);
-//     });
-
-//     return card;
-// };
 
 //work with Card class
-function createCards(data) {
+function createCard(data) {
     const item = new Card(data.name, data.link, '.element-template', openBigImage);
     // Создаём карточку и возвращаем
     return item.createCard();
 }
 
 function insertCard(item) {
-    const cardPlace = document.querySelector('.photo-grid');
     cardPlace.append(item);
 }
 
 function renderCards() {
     initialCards.forEach((element) => {
         //new instances of Card class
-        const elementCard = createCards(element);
+        const elementCard = createCard(element);
         //insert in html
         insertCard(elementCard);
     });
@@ -134,9 +106,9 @@ const addButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup_type_new-place');
 const formImg = document.querySelector('.popup__form_data_card');
 
-editButton.addEventListener('click', workOFpopup);
+editButton.addEventListener('click', openProfilePopup);
 
-formElement.addEventListener('submit', handleFormSubmit);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 addButton.addEventListener('click', (event) => {
     openPopup(popupCard)
@@ -162,7 +134,7 @@ validatorEditForm.enableValidation();
 const validatorAddForm = new FormValidator(settings, popupCard);
 validatorAddForm.enableValidation();
 
-function workOFpopup() {
+function openProfilePopup() {
     openPopup(editPopup);
     nameInput.value = nameProvile.textContent;
     descriptionInput.value = descriptionProfile.textContent;
@@ -171,7 +143,7 @@ function workOFpopup() {
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     nameProvile.textContent = nameInput.value;
     descriptionProfile.textContent = descriptionInput.value;
@@ -185,7 +157,7 @@ const linkImage = document.querySelector('.popup__input_type_link');
 
 function handleImageSubmit(event) {
     event.preventDefault();
-    const card = createCards({ name: textImage.value, link: linkImage.value });
+    const card = createCard({ name: textImage.value, link: linkImage.value });
     cardsContainer.prepend(card);
     closePopup(popupCard);
     event.target.reset();
