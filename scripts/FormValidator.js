@@ -63,11 +63,9 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    this._inputList.forEach(item => {
-      item.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });
-      this._setEventListeners();
+    this._formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
     });
+    this._setEventListeners();
   };
 }
