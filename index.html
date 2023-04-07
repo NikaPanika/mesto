@@ -48,10 +48,10 @@
             <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
             <form class="popup__form popup__form_data_profile" name="form-profile" novalidate>
-                <input type="text" class="popup__input popup__input_type_name" name="user-name"
+                <input type="text" class="popup__input popup__input_type_name" name="name"
                     placeholder="Жак-Ив Кусто" required minlength='2' maxlength='40' id="name-input">
                 <span class="popup__input-error name-input-error"></span>
-                <input type="text" class="popup__input popup__input_type_description" name="user-work"
+                <input type="text" class="popup__input popup__input_type_description" name="info"
                     placeholder="Исследователь океана" required minlength='2' maxlength='200' id="description-input">
                 <span class="popup__input-error description-input-error"></span>
                 <button class="popup__save-button" type="submit">Сохранить</button>
@@ -63,10 +63,10 @@
             <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Новое место</h2>
             <form class="popup__form popup__form_data_card" name="form-profile" novalidate>
-                <input type="text" class="popup__input popup__input_type_place" name="user-name" placeholder="Название"
+                <input type="text" class="popup__input popup__input_type_place" name="name" placeholder="Название"
                     required minlength='2' maxlength='30' id="place-input">
                 <span class="popup__input-error place-input-error"></span>
-                <input type="url" class="popup__input popup__input_type_link" name="user-work"
+                <input type="url" class="popup__input popup__input_type_link" name="link"
                     placeholder="Ссылка на картинку" required id="link-input">
                 <span class="popup__input-error link-input-error"></span>
                 <button class="popup__save-button" type="submit">Создать</button>
@@ -80,7 +80,7 @@
             <h2 class="popup__caption">Новое место</h2>
         </div>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

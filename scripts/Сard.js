@@ -1,11 +1,11 @@
 export default class Card {
 
-    constructor(name, link, templateSelector, openBigImage) {
+    constructor(name, link, templateSelector, {handleCardClick}) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
-        this._openBigImage = openBigImage;
-    }
+        this._openBigImage = handleCardClick;
+    }   
 
     _getTemplate() {
         const card = document.querySelector(this._templateSelector).content.querySelector('.photo-grid__element').cloneNode(true);
@@ -45,4 +45,8 @@ export default class Card {
 
         return this._element;
     }
+
+    _handleImageClick() {
+        this._handleCardClick(this._name, this._link);
+     }
 };
