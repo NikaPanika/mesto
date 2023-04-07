@@ -1,11 +1,13 @@
-import Card from "../scripts/Сard.js";
-import FormValidator from "../scripts/FormValidator.js";
-import UserInfo from "../scripts/UserInfo.js";
-import Section from "../scripts/Section.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
+import Card from "./scripts/Сard.js";
+import FormValidator from "./scripts/FormValidator.js";
+import UserInfo from "./scripts/UserInfo.js";
+import Section from "./scripts/Section.js";
+import PopupWithForm from "./scripts/PopupWithForm.js";
+import PopupWithImage from "./scripts/PopupWithImage.js";
 
-import { initialCards, editButton, addButton, settings, popupCard, editPopup} from "../utilis/constants.js";
+import './pages/index.css';
+
+import { initialCards, editButton, addButton, settings, popupCard, editPopup} from "./utilis/constants.js";
 
 
 //work with FormValidator class

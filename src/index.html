@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 
 <body class="body">
     <header class="header">
-        <img src="./images/logo.svg" alt="Логотип Mesto" class="header__logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto" class="header__logo">
     </header>
     <main class="main">
         <section class="profile">
             <div class="profile__about">
-                <img src="./images/avatar.png" alt="Фотография" class="profile__avatar">
+                <img src="<%=require('./images/avatar.png')%>" alt="Фотография" class="profile__avatar">
                 <div class="profile__info">
                     <div class="profile__string">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -35,7 +34,7 @@
     </footer>
     <template class="element-template">
         <article class="photo-grid__element">
-            <img src="./images/Dombai.png" class="photo-grid__photo">
+            <img src="<%=require('./images/Dombai.png')%>" class="photo-grid__photo">
             <button class="photo-grid__delete" type="button"></button>
             <div class="photo-grid__text">
                 <h2 class="photo-grid__place"></h2>
@@ -76,11 +75,11 @@
     <div class="popup popup_type_big-image">
         <div class="popup__case">
             <button class="popup__close-button" type="button"></button>
-            <img src="./images/Dombai.png" alt="Нужное изображение отсутствует" class="popup__photo">
+            <img src="<%=require('./images/Dombai.png')%>" alt="Нужное изображение отсутствует" class="popup__photo">
             <h2 class="popup__caption">Новое место</h2>
         </div>
     </div>
-    <script type="module" src="./pages/index.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>
