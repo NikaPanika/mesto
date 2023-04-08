@@ -13,7 +13,6 @@ export default class PopupWithImage extends Popup{
     this._increaseImgLink.alt = text;
     this._increaseImgText.textContent = text;
     super.openPopup();
-    super.setEventListeners();
     }
     
 }

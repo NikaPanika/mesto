@@ -1,13 +1,13 @@
-import Card from "./scripts/Сard.js";
-import FormValidator from "./scripts/FormValidator.js";
-import UserInfo from "./scripts/UserInfo.js";
-import Section from "./scripts/Section.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
-import './pages/index.css';
+import '../pages/index.css';
 
-import { initialCards, editButton, addButton, settings, popupCard, editPopup} from "./utilis/constants.js";
+import { initialCards, editButton, addButton, settings, popupCard, editPopup} from "../utilis/constants.js";
 
 
 //work with FormValidator class
@@ -31,11 +31,13 @@ const startCard = new Section({
 }, '.photo-grid');
 startCard.rendererAll();
 
+const popupWithImage = new PopupWithImage('.popup_type_big-image');
+popupWithImage.setEventListeners();  
+
 function createCard(data) {
     const item = new Card(data.name, data.link, '.element-template', {
         handleCardClick: () => {
-            const popupWithImage = new PopupWithImage('.popup_type_big-image');
-            popupWithImage.openPopup(data.name, data.link)
+            popupWithImage.openPopup(data.name, data.link);
         }
     });
     return item.createCard();
