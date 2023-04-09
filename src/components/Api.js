@@ -1,0 +1,57 @@
+export default class Api {
+    constructor(config) {
+        this._commonUrl = config.url;
+        this._headers = config.headers;
+    }
+
+    getUser() {
+        return fetch(`https://${this._commonUrl}/users/me`, {
+            method: 'GET',
+            headers: this._headers
+        }).then(res => {
+            if (res.ok) {
+                return Promise.resolve(res.json());
+            } else {
+                return Promise.reject(res.status);
+            }
+
+        });
+    }
+
+    getInitialCards() {
+        return fetch(`https://mesto.${this._commonUrl}/cards`, {
+            method: 'GET',
+            headers: this._headers
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                else { return Promise.reject(res.status) }
+            })
+    }
+
+    editProfile(data) {
+        return fetch(`https://mesto.${this._commonUrl}/users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify(data)
+        })
+            .then((res) => {
+                if (res.ok) { return Promise.resolve(res.json()) }
+                else { return Promise.reject(res.status) }
+            })
+    }
+
+    addCard(data) {
+        return fetch(`https://mesto.${this._commonUrl}/cards`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify(data)
+        })
+            .then((res) => {
+                if (res.ok) { return Promise.resolve(res.json()) }
+                else { return Promise.reject(res.status) }
+            })
+    }
+}
