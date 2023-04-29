@@ -3,19 +3,19 @@ export default class Api {
         this._commonUrl = config.url;
         this._headers = config.headers;
     }
+    _checkResponse(res){
+        if (res.ok) {
+            return Promise.resolve(res.json());
+        } else {
+            return Promise.reject(res.status);
+        }
+    }
 
     getUser() {
         return fetch(`https://${this._commonUrl}/users/me`, {
             method: 'GET',
             headers: this._headers
-        }).then(res => {
-            if (res.ok) {
-                return Promise.resolve(res.json());
-            } else {
-                return Promise.reject(res.status);
-            }
-
-        });
+        }).then(this._checkResponse);
     }
 
     getInitialCards() {
@@ -23,12 +23,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     editProfile(data) {
@@ -37,10 +32,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     addCard(data) {
@@ -49,10 +41,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(data)
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     addPhotoLike(id) {
@@ -60,10 +49,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     deletePhotoLike(id) {
@@ -71,10 +57,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     deleteCard(id) {
@@ -82,10 +65,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 
     setAvatar(data) {
@@ -94,9 +74,6 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify({avatar: data.link})
         })
-            .then((res) => {
-                if (res.ok) { return Promise.resolve(res.json()) }
-                else { return Promise.reject(res.status) }
-            })
+            .then(this._checkResponse);
     }
 }

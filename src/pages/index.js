@@ -5,7 +5,7 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Api from "../components/Api.js";
-import  PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 import '../pages/index.css';
 
@@ -42,8 +42,19 @@ const api = new Api({
     }
 })
 
+Promise.all([api.getUser(), api.getInitialCards()])
+    .then(([userData, cards]) => {
+        userInfo.setUserInfo(userData.name, userData.about, userData.avatar, userData._id);
+        cards.reverse().forEach(card => {
+            startCard.addItem(createCard(card));
+        });
 
-const deletePopup = new  PopupWithConfirmation('.popup-delete');
+    })
+    .catch((err) => {
+        console.log(`Ошибка card and userInfo: ${err}`)
+    });
+
+const deletePopup = new PopupWithConfirmation('.popup-delete');
 deletePopup.setEventListeners();
 
 const popupWithImage = new PopupWithImage('.popup_type_big-image');
@@ -71,6 +82,7 @@ function createCard(data) {
             }
         }, {
         handleLikeClick: (id) => {
+            //console.log(item.isLiked());
             if (item.isLiked()) {
                 api
                     .deletePhotoLike(id)
@@ -100,7 +112,8 @@ const editPopupWithForm = new PopupWithForm('.popup_type_edit', {
             .then(res => {
                 userInfo.setUserInfo(res.name, res.about, res.avatar, res._id);
                 editPopupWithForm.closePopup();
-            }).catch(err => console.log(`Ошибка edit: ${err}`))
+            })
+            .catch(err => console.log(`Ошибка edit: ${err}`))
             .finally(() => {
                 editPopupWithForm.stopLoading();
             });
@@ -115,16 +128,6 @@ editButton.addEventListener('click', () => {
 });
 
 
-api.getInitialCards()
-    .then((cards) => {
-        cards.forEach(card => {
-            startCard.addItem(createCard(card));
-        })
-    })
-    .catch((err) => {
-        console.log(`Ошибка card: ${err}`)
-    });
-
 const addPopupWithForm = new PopupWithForm('.popup_type_new-place', {
     handleFormSubmit: (item) => {
         api.addCard(item)
@@ -133,7 +136,10 @@ const addPopupWithForm = new PopupWithForm('.popup_type_new-place', {
                 addPopupWithForm.closePopup();
             })
             .catch(err =>
-                console.log(`Ошибка edit: ${err}`));
+                console.log(`Ошибка edit: ${err}`))
+            .finally(() => {
+                addPopupWithForm.stopLoading();
+            });
 
     }
 });
@@ -150,7 +156,10 @@ const addPopupAvatar = new PopupWithForm('.popup-avatar', {
                 addPopupAvatar.closePopup();
             })
             .catch(err =>
-                console.log(`Ошибка avatar: ${err}`));
+                console.log(`Ошибка avatar: ${err}`))
+            .finally(() => {
+                addPopupAvatar.stopLoading();
+            });
 
     }
 });
@@ -159,11 +168,3 @@ avatarButton.addEventListener('click', () => {
     addPopupAvatar.openPopup();
 });
 addPopupAvatar.setEventListeners();
-
-api.getUser()
-    .then(data => {
-        userInfo.setUserInfo(data.name, data.about, data.avatar, data._id);
-    })
-    .catch((err) => {
-        console.log(`Error: ${err}`)
-    });
