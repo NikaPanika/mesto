@@ -15,6 +15,8 @@
 @import url(../blocks/profile/__description/profile__description.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__string/profile__string.css);
+@import url(../blocks/profile/__overlay/profile__overlay.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
 /* Photo-grid*/
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__element/photo-grid__element.css);
@@ -23,6 +25,8 @@
 @import url(../blocks/photo-grid/__place/photo-grid__place.css);
 @import url(../blocks/photo-grid/__like/photo-grid__like.css);
 @import url(../blocks/photo-grid/__delete/photo-grid__delete.css);
+@import url(../blocks/photo-grid/__like-container/photo-grid__like-container.css);
+@import url(../blocks/photo-grid/__like-counter/photo-grig__like-counter.css);
 /* Footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -40,5 +44,7 @@
 @import url(../blocks/popup/__case/popup__case.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/_type/popup_type_big-image.css);
+@import url(../blocks/popup-delete/__header/popup-delete__header.css);
+@import url(../blocks/popup-delete/__save-button/popup-delete__save-button.css);
 /* Validation*/
 @import url(../blocks/popup/__input-error/popup__input-error.css);

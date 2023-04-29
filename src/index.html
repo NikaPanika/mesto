@@ -14,13 +14,16 @@
     <main class="main">
         <section class="profile">
             <div class="profile__about">
-                <img src="<%=require('./images/avatar.png')%>" alt="Фотография" class="profile__avatar">
+                <div class="profile__avatar-container">
+                    <button class="profile__overlay"></button>
+                    <img src="" alt="Фотография" class="profile__avatar">
+                </div>
                 <div class="profile__info">
                     <div class="profile__string">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <h1 class="profile__name"></h1>
                         <button class="profile__edit-button" type="button"></button>
                     </div>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description"></p>
                 </div>
             </div>
             <button class="profile__add-button" type="button"></button>
@@ -38,7 +41,10 @@
             <button class="photo-grid__delete" type="button"></button>
             <div class="photo-grid__text">
                 <h2 class="photo-grid__place"></h2>
-                <button class="photo-grid__like" type="button"></button>
+                <div class="photo-grid__like-container">
+                    <button class="photo-grid__like" type="button"></button>
+                    <p class="photo-grid__like-counter"></p>
+                </div>
             </div>
         </article>
     </template>
@@ -47,8 +53,8 @@
             <button class="popup__close-button" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
             <form class="popup__form popup__form_data_profile" name="form-profile" novalidate>
-                <input type="text" class="popup__input popup__input_type_name" name="name"
-                    placeholder="Жак-Ив Кусто" required minlength='2' maxlength='40' id="name-input">
+                <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Жак-Ив Кусто"
+                    required minlength='2' maxlength='40' id="name-input">
                 <span class="popup__input-error name-input-error"></span>
                 <input type="text" class="popup__input popup__input_type_description" name="about"
                     placeholder="Исследователь океана" required minlength='2' maxlength='200' id="description-input">
@@ -77,6 +83,27 @@
             <button class="popup__close-button" type="button"></button>
             <img src="<%=require('./images/Dombai.png')%>" alt="Нужное изображение отсутствует" class="popup__photo">
             <h2 class="popup__caption">Новое место</h2>
+        </div>
+    </div>
+    <div class="popup popup-delete">
+        <div class="popup__container">
+            <form class="popup__form popup__form_popup-delete">
+                <button class="popup__close-button" type="button"></button>
+                <h2 class="popup__header popup-delete__header">Вы уверены?</h2>
+                <button class="popup__save-button popup-delete__save-button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup-avatar">
+        <div class="popup__container">
+            <form class="popup__form popup__form_popup-delete">
+                <button class="popup__close-button" type="button"></button>
+                <h2 class="popup__header popup-delete__header">Обновить аватар</h2>
+                <input type="url" class="popup__input popup__input_type_link" name="link"
+                    placeholder="Ссылка на картинку" required id="link-input">
+                    <span class="popup__input-error link-input-error"></span>
+                <button class="popup__save-button popup-delete__save-button" type="submit">Сохранить</button>
+            </form>
         </div>
     </div>
 </body>
